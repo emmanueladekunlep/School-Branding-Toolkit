@@ -8,7 +8,7 @@ function App() {
   const [analysisResult, setAnalysisResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [generatedContent, setGeneratedContent] = useState([]);
-  const [campaigns, setCampaigns] = useState([
+  const [campaigns] = useState([
     { id: 1, name: 'Summer Enrollment', startDate: '2026-06-01', endDate: '2026-07-15', channel: 'Social Media', status: 'Active' },
     { id: 2, name: 'Open Day Campaign', startDate: '2026-05-01', endDate: '2026-05-30', channel: 'Email', status: 'Completed' },
   ]);
@@ -20,9 +20,8 @@ function App() {
     }
     
     setLoading(true);
-    // Simulate AI analysis
     setTimeout(() => {
-      const score = Math.floor(Math.random() * 40) + 60; // 60-100
+      const score = Math.floor(Math.random() * 40) + 60;
       setBrandScore(score);
       setAnalysisResult({
         visualIdentity: Math.floor(Math.random() * 40) + 60,
@@ -58,15 +57,8 @@ function App() {
     return '#c62828';
   };
 
-  const getScoreBg = (score) => {
-    if (score >= 80) return '#e8f5e9';
-    if (score >= 60) return '#fff3e0';
-    return '#fce4ec';
-  };
-
   return (
     <div className="App">
-      {/* Header */}
       <header className="header">
         <div className="header-content">
           <img 
@@ -81,7 +73,6 @@ function App() {
         </div>
       </header>
 
-      {/* Navigation */}
       <nav className="nav">
         <button className={activeTab === 'dashboard' ? 'nav-active' : ''} onClick={() => setActiveTab('dashboard')}>
           📊 Dashboard
@@ -97,9 +88,7 @@ function App() {
         </button>
       </nav>
 
-      {/* Main Content */}
       <main className="main-content">
-        {/* DASHBOARD TAB */}
         {activeTab === 'dashboard' && (
           <div>
             <div className="stats-grid">
@@ -153,7 +142,6 @@ function App() {
           </div>
         )}
 
-        {/* ANALYZE TAB */}
         {activeTab === 'analyze' && (
           <div className="analyze-container">
             <h2>🔍 School Brand Scorecard</h2>
@@ -219,7 +207,6 @@ function App() {
           </div>
         )}
 
-        {/* CONTENT GENERATOR TAB */}
         {activeTab === 'content' && (
           <div className="content-generator-container">
             <h2>✍️ Marketing Content Generator</h2>
@@ -242,7 +229,6 @@ function App() {
           </div>
         )}
 
-        {/* CAMPAIGN TRACKER TAB */}
         {activeTab === 'campaigns' && (
           <div className="campaign-container">
             <h2>📈 Campaign Tracker</h2>
@@ -262,7 +248,6 @@ function App() {
         )}
       </main>
 
-      {/* Footer */}
       <footer className="footer">
         <p>© 2026 School Branding & Marketing Toolkit | Built for LabelReach</p>
       </footer>
